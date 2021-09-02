@@ -66,7 +66,6 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data.result);
           if (res.data.result.list) {
             this.table = true;
             this.expressName = res.data.result.typename;
