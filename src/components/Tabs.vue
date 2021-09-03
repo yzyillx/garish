@@ -29,7 +29,8 @@ export default {
       instance.get('/news/get',{
         params:{
           appkey:'652e5139788ab792',
-          channel:tab.label
+          channel:tab.label,
+          num:12
         }
       }).then(res=>{
           this.news=res.data.result.list
@@ -40,7 +41,8 @@ export default {
       instance.get('/news/get',{
         params:{
           appkey:'652e5139788ab792',
-          channel:'头条'
+          channel:'头条',
+          num:12
         }
       }).then(res=>{
           this.news=res.data.result.list

@@ -1,6 +1,9 @@
 <template>
   <div>
     <el-card>
+      <div slot="header" class="clearfix">
+        <span>在这里，输入完快递单号之后，点击右侧的查询按钮，就可以查询快递信息，如果是顺丰快递，还需要提供手机号。</span>
+      </div>
       <el-row :gutter="30">
         <el-col :span="18">
           <el-input
@@ -91,5 +94,9 @@ export default {
 .expressname {
   display: flex;
   align-content: center;
+}
+.clearfix{
+  text-align: center;
+  font-size: 24px;
 }
 </style>
