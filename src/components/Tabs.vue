@@ -1,5 +1,5 @@
 <template>
-  <el-tabs @tab-click="handleClick" tab-position="left" v-model="activeName">
+  <el-tabs @tab-click="handleClick" tab-position="top" v-model="activeName">
     <el-tab-pane v-for="(item,index) in channel" :label="item" :name="'a'+index" :key="index">
       <el-collapse accordion>
         <el-collapse-item v-for="(item,index) in news" :name="index" :key="index">

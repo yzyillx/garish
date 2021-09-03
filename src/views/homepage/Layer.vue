@@ -1,15 +1,17 @@
 <template>
   <el-container>
     <el-header
-      height="80px"
-      style="background: darksalmon; text-align: center; line-height: 80px"
+      style="text-align: center; line-height: 80px;height:200px;background: rgba(255,255,255,0)"
     >
       <el-row>
-        <el-col :span="16">
-          <h2 style="float: right">选择你想体验的功能</h2>
-          <div style="clear: both"></div>
+        <el-col :span="22">
+          <el-carousel :interval="4000" type="card" height="200px">
+            <el-carousel-item v-for="(item,index) in welcome" :key="index">
+              <h3 class="medium">{{ item }}</h3>
+            </el-carousel-item>
+          </el-carousel>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="2">
           <el-dropdown @command="exit">
             <span class="el-dropdown-link">
               欢迎您，<strong>{{ this.username }}</strong>
@@ -47,6 +49,7 @@ export default {
     return {
       menuList: [],
       dialogVisible: false,
+      welcome:'欢迎大家光临'
     };
   },
   created() {
@@ -85,4 +88,11 @@ export default {
 </script>
 
 <style scoped>
+.el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
 </style>
