@@ -1,4 +1,7 @@
 <template>
+  <el-card>
+
+  </el-card>
     <tabs :channel="channel" style="text-align: center;"></tabs>
 </template>
 
