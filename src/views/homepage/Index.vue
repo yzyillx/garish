@@ -1,8 +1,8 @@
 <template>
   <el-card>
-
-  </el-card>
     <tabs :channel="channel" style="text-align: center;"></tabs>
+  </el-card>
+
 </template>
 
 <script>
@@ -13,19 +13,19 @@ export default {
   name: "Index",
   data() {
     return {
-      channel:[]
+      channel: []
     }
   },
   created() {
     instance.get('/news/channel', {
-      params:{
+      params: {
         appkey: '652e5139788ab792'
       }
     }).then(res => {
-      this.channel=res.data.result
+      this.channel = res.data.result
     })
   },
-  components:{
+  components: {
     Tabs
   }
 }
