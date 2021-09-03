@@ -1,17 +1,18 @@
 <template>
   <el-container>
     <el-header
-      style="text-align: center; line-height: 80px;height:200px;background: rgba(255,255,255,0)"
+      style="text-align: center;height:260px;background: rgba(255,255,255,0);"
     >
       <el-row>
-        <el-col :span="22">
           <el-carousel :interval="4000" type="card" height="200px">
             <el-carousel-item v-for="(item,index) in welcome" :key="index">
               <h3 class="medium">{{ item }}</h3>
             </el-carousel-item>
           </el-carousel>
-        </el-col>
-        <el-col :span="2">
+      </el-row>
+      <el-row type="flex" align="end">
+        <el-col :span="23"></el-col>
+        <el-col :span="1">
           <el-dropdown @command="exit">
             <span class="el-dropdown-link">
               欢迎您，<strong>{{ this.username }}</strong>

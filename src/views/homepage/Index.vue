@@ -1,8 +1,15 @@
 <template>
-  <el-card>
-    <tabs :channel="channel" style="text-align: center;"></tabs>
-  </el-card>
-
+  <el-row :gutter="10">
+    <el-col :span="12">
+      <el-card>
+        <tabs :channel="channel" style="text-align: center;"></tabs>
+      </el-card>
+    </el-col>
+    <el-col :span="12">
+      <el-calendar v-model="value">
+      </el-calendar>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -13,7 +20,8 @@ export default {
   name: "Index",
   data() {
     return {
-      channel: []
+      channel: [],
+      value:new Date()
     }
   },
   created() {
