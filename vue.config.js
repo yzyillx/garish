@@ -7,7 +7,7 @@ module.exports={
                 pathRewrite:{
                     "^/api":"https://api.binstd.com"
                 }
-            }
+            },
         }
     }
 }

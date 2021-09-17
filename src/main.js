@@ -12,6 +12,7 @@ import '@/utils/token'
 import '@/router/permission'
 
 
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 new Vue({

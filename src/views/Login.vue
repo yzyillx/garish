@@ -16,6 +16,7 @@
       </el-form-item>
     </el-form>
     <el-button type="primary" class="button" @click="login">登录</el-button>
+    <el-link :underline="false" @click="goRegister" class="register">没有账户?点此注册</el-link>
   </el-card>
 </template>
 
@@ -40,7 +41,8 @@ export default {
       }
     };
   },
-  created() {},
+  created() {
+  },
   methods: {
     login(){
       if(this.ruleForm.name&&this.ruleForm.password){
@@ -59,6 +61,9 @@ export default {
       }else{
         this.$message.error('请输入用户名或密码');
       }
+    },
+    goRegister(){
+      this.$router.push('/register')
     }
   },
 };
@@ -76,8 +81,14 @@ export default {
   margin: 30px auto !important;
 }
 .button{
-  width: 70%;
+  width: 80%;
   margin-top: 40px;
   margin-right: auto;
+}
+.register{
+  display: block;
+  margin-top: 50px;
+  float: right;
+  margin-right: 60px;
 }
 </style>
