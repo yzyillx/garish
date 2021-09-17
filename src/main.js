@@ -10,9 +10,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/publiccss/public.css'
 import '@/utils/token'
 import '@/router/permission'
+import * as echarts from 'echarts'
 
-
-
+Vue.prototype.$echarts=echarts
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 new Vue({
