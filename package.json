@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -12,6 +12,9 @@
     "core-js": "^3.6.5",
     "echarts": "^5.2.0",
     "element-ui": "^2.15.5",
+    "jquery": "^3.6.0",
+    "live2d-widget": "^3.1.4",
+    "lodash": "^4.17.21",
     "mockjs": "^1.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

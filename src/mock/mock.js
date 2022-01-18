@@ -2,7 +2,6 @@ import Mock from "mockjs"
  const check=new Map([['admin','123456']])
 Mock.mock("localhost:8080/","post",(res)=>{
     const result=JSON.parse(res.body)
-    console.log(check.get(result.name))
     if(check.get(result.name)===result.password){
         return{
             code:200,
@@ -94,4 +93,5 @@ const menuList=[
 Mock.mock('localhost:8080/menu',"post",()=>{
     return menuList
 })
+
 

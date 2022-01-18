@@ -7,7 +7,12 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-calendar v-model="value">
+        <el-calendar>
+          <template slot="dateCell" slot-scope="{date,data}">
+            <p :class="data.isSelected?'is-selected':''" @click="riqi(data.day)">
+              {{data.day.split('-').slice(1).join('-')}}
+            </p>
+          </template>
         </el-calendar>
       </el-col>
     </el-row>
@@ -24,7 +29,6 @@ export default {
   data() {
     return {
       channel: [],
-      value:new Date(),
       option : {
         series: [
             {
@@ -260,6 +264,11 @@ export default {
       date = null;
     }, 1000);
   },
+  methods:{
+    riqi(res){
+      console.log(res)
+    }
+  },
   components: {
     Tabs
   }
@@ -272,5 +281,7 @@ export default {
   height:600px;
   float: right;
 }
-
+.is-selected{
+  color:#1989FA
+}
 </style>

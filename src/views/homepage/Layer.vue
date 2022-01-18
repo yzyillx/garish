@@ -35,7 +35,7 @@
     </el-container>
     <el-footer
       style="background: chocolate; position: fixed; bottom: 0; width: 100%"
-      >这里是脚底</el-footer
+      >这里确实是脚底</el-footer
     >
   </el-container>
 </template>
