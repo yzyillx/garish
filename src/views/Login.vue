@@ -1,7 +1,7 @@
 <template>
   <div class="background" @click="showFonts">
       <el-card class="box-card">
-        <h2>一个花里胡哨的功能合集</h2>
+        <h2>”死亡如风，常伴吾身“</h2>
         <el-form
             :model="ruleForm"
             :rules="rules"
@@ -9,21 +9,20 @@
             label-width="auto"
             class="demo-ruleForm"
         >
-          <el-form-item label="用户名" prop="name" class="item">
-            <el-input v-model="ruleForm.name"></el-input>
+          <el-form-item prop="name" class="item">
+            <el-input placeholder="英雄名" v-model="ruleForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="password" class="item">
-            <el-input v-model="ruleForm.password" type="password"></el-input>
+          <el-form-item prop="password" class="item">
+            <el-input placeholder="英雄密码" v-model="ruleForm.password" type="password"></el-input>
           </el-form-item>
         </el-form>
-        <el-button type="primary" class="button" @click="login">登录</el-button>
+        <el-button type="primary" class="loginButton" @click="login">登录</el-button>
         <el-link :underline="false" @click="goRegister" class="register">没有账户?点此注册</el-link>
       </el-card>
   </div>
 </template>
 
 <script>
-import {service} from "@/utils/http";
 import {setToken} from "@/utils/token";
 import {L2Dwidget} from "live2d-widget";
 import $ from "jquery"
@@ -37,10 +36,10 @@ export default {
       },
       rules:{
         name: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { required: true, message: '请输入英雄名', trigger: 'blur' },
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
+          { required: true, message: '请输入英雄密码', trigger: 'blur' },
         ],
       },
       arr:["富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"],
@@ -58,20 +57,27 @@ export default {
   methods: {
     login(){
       if(this.ruleForm.name&&this.ruleForm.password){
-        service.post('/',{
-          name:this.ruleForm.name,
-          password:this.ruleForm.password
-        }).then(res=>{
-          if(res.data.success){
-            setToken(res.data.token)
-            sessionStorage.setItem("user",this.ruleForm.name)
-            this.$router.push('/')
-          }else{
-            this.$message.error('用户名或密码错误')
-          }
-        })
+            //登录框动画
+            $('.box-card').animate({
+              borderRadius:'50%'
+            },'slow').animate({
+              with:'-=200px',
+              height:'-=200px',
+              left:'+=800px',
+              top:'-=100px',
+            },'slow',()=>{
+              setToken('token')
+              sessionStorage.setItem("user",this.ruleForm.name)
+              setTimeout(()=>{
+                this.$router.push('/')
+              },1000)
+            }).animate({
+              opacity:'-=0.3'
+            }).children().animate({
+              opacity:'-=0.4'
+            },'slow')
       }else{
-        this.$message.error('请输入用户名或密码');
+        this.$message.error('请输入英雄名或密码');
       }
     },
     goRegister(){
@@ -168,7 +174,7 @@ export default {
       };
       //当时鼠标位置存储，离开的时候，释放当前位置信息
       window.onmousemove =  e=> {
-        e = e || window.event, current_point.x = e.clientX, current_point.y = e.clientY;
+        e = e || e.event, current_point.x = e.clientX, current_point.y = e.clientY;
       }, window.onmouseout =  ()=>{
         current_point.x = null, current_point.y = null;
       };
@@ -214,7 +220,7 @@ export default {
     loadModel(){
       L2Dwidget.init({
         model: {
-          jsonPath: 'https://cdn.jsdelivr.net/gh/wangsrGit119/wangsr-image-bucket/L2Dwidget/live2d-widget-model-shizuku/assets/shizuku.model.json',
+          jsonPath: 'https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json',
           scale: 1
         },
         dialog:{
@@ -230,16 +236,18 @@ export default {
 <style scoped lang="less">
 .box-card{
   text-align: center;
-  width: 600px;
-  height: 400px;
-  margin: auto;
+  width: 450px;
+  height: 450px;
+  left: 40%;
   z-index: 999;
+  position: absolute;
+  padding-top: 30px;
 }
 .item{
   width: 80% !important;
-  margin: 30px auto !important;
+  margin: 40px auto !important;
 }
-.button{
+.loginButton{
   width: 80%;
   margin-top: 40px;
   margin-right: auto;

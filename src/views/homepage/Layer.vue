@@ -1,19 +1,21 @@
 <template>
   <el-container>
     <el-header
-      style="text-align: center;height:260px;background: rgba(255,255,255,0);"
+      style="text-align: center;height:330px;background: rgba(255,255,255,0);"
     >
       <el-row>
-          <el-carousel :interval="4000" type="card" height="200px">
+          <el-carousel :interval="4000" type="card" height="300px">
             <el-carousel-item v-for="(item,index) in welcome" :key="index">
-              <h3 class="medium">{{ item }}</h3>
+              <div :style="item.url">
+                {{item.name}}
+              </div>
             </el-carousel-item>
           </el-carousel>
       </el-row>
       <el-row type="flex" align="end">
-        <el-col :span="23"></el-col>
-        <el-col :span="1">
-          <el-dropdown @command="exit">
+        <el-col :span="22"></el-col>
+        <el-col :span="2">
+          <el-dropdown @command="exit" style="position: relative;z-index: 999999">
             <span class="el-dropdown-link">
               欢迎您，<strong>{{ this.username }}</strong>
               <i class="el-icon-arrow-down el-icon--right"></i>
@@ -35,7 +37,7 @@
     </el-container>
     <el-footer
       style="background: chocolate; position: fixed; bottom: 0; width: 100%"
-      >这里确实是脚底</el-footer
+      >Footer</el-footer
     >
   </el-container>
 </template>
@@ -50,7 +52,55 @@ export default {
     return {
       menuList: [],
       dialogVisible: false,
-      welcome:'欢迎大家光临'
+      welcome: [
+        {
+          url: {
+            backgroundImage: `url(${require("../../assets/亚索.jpeg")})`,
+            height: '300px',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: `100% 100%`,
+            color: 'red'
+          },
+          name: '疾风剑豪-亚索'
+        }, {
+          url: {
+            backgroundImage: `url(${require("../../assets/乐芙兰.jpeg")})`,
+            height: '300px',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: `100% 100%`,
+            color: 'red'
+          },
+          name: '诡术妖姬-乐芙兰'
+        },
+        {
+          url: {
+            backgroundImage: `url(${require("../../assets/璐璐.jpeg")})`,
+            height: '300px',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: `100% 100%`,
+            color: 'red'
+          },
+          name: '仙灵女巫-璐璐'
+        },
+        {
+          url: {
+            backgroundImage: `url(${require("../../assets/艾希.jpeg")})`,
+            height: '300px',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: `100% 100%`,
+            color: 'red'
+          },
+          name: '寒冰射手-艾希'
+        }, {
+          url: {
+            backgroundImage: `url(${require("../../assets/赵信.jpeg")})`,
+            height: '300px',
+            backgroundRepeat: "no-repeat",
+            backgroundSize: `100% 100%`,
+            color: 'red'
+          },
+          name: '德邦总管-赵信'
+        }]
     };
   },
   created() {
@@ -61,7 +111,7 @@ export default {
   methods: {
     exit(command) {
       if (command === "a") {
-        this.$confirm("是否确认退出登录?", "注意", {
+        this.$confirm("是否确认退出登录?", '尊敬的'+this.username, {
           distinguishCancelAndClose: true,
           confirmButtonText: "确认",
           cancelButtonText: "取消",
