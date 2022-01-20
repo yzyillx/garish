@@ -1,22 +1,22 @@
 import Mock from "mockjs"
- const check=new Map([['admin','123456']])
-Mock.mock("localhost:8080/","post",(res)=>{
-    const result=JSON.parse(res.body)
-    if(check.get(result.name)===result.password){
-        return{
-            code:200,
-            success:true,
-            message:'成功',
-            token:'j21908vnq9n23p4n'
-        }
-    }else{
-        return{
-            code:100,
-            success: false,
-            message: '登陆失败'
-        }
-    }
-})
+//  const check=new Map([['admin','123456']])
+// Mock.mock("localhost:8080/","post",(res)=>{
+//     const result=JSON.parse(res.body)
+//     if(check.get(result.name)===result.password){
+//         return{
+//             code:200,
+//             success:true,
+//             message:'成功',
+//             token:'j21908vnq9n23p4n'
+//         }
+//     }else{
+//         return{
+//             code:100,
+//             success: false,
+//             message: '登陆失败'
+//         }
+//     }
+// })
 const menuList=[
     {
         name:'首页',
@@ -89,6 +89,11 @@ const menuList=[
             }
         ]
     },
+    {
+        name: '音乐',
+        icon: 'el-icon-service',
+        url: '/music',
+    }
 ]
 Mock.mock('localhost:8080/menu',"post",()=>{
     return menuList

@@ -90,6 +90,11 @@ const routes = [
             component:()=>import('@/views/tools/Talk')
           }
         ]
+      },
+      {
+        path:'music',
+        name:'Music',
+        component:()=>import('@/views/music/Music')
       }
     ]
   },

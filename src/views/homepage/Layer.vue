@@ -31,7 +31,7 @@
       <el-aside width="250px" style="height: auto">
         <menu-list :menuList="menuList"></menu-list>
       </el-aside>
-      <el-main style="background: antiquewhite; height: 100vh; overflow: auto">
+      <el-main style="background: rgba(241,225,225,0.3); height: 100vh; overflow: auto">
         <router-view></router-view>
       </el-main>
     </el-container>
